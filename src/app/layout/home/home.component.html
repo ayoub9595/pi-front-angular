@@ -1,0 +1,6 @@
+<navbar (toggle)="openSidebar()"></navbar>
+<sidebar [show]="show" (showChange)="closeSidebar()"></sidebar>
+<backdrop *ngIf="show"></backdrop>
+<main class="outlet-container">
+  <router-outlet></router-outlet>
+</main>
