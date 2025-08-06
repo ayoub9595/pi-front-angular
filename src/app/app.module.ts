@@ -18,6 +18,9 @@ import { DetailsIconComponent } from './components/icons/details-icon/details-ic
 import { ChangeIconComponent } from './components/icons/change-icon/change-icon.component';
 import { LogoutIconComponent } from './components/icons/logout-icon/logout-icon.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {provideHttpClient} from '@angular/common/http';
+import { ToasterComponent } from './toaster/toaster.component';
 
 
 @NgModule({
@@ -37,13 +40,17 @@ import { DashboardComponent } from './views/dashboard/dashboard.component';
     ChangeIconComponent,
     LogoutIconComponent,
     DashboardComponent,
+    ToasterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    provideHttpClient()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

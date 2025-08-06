@@ -14,7 +14,7 @@
         <h1>Parc Informatique</h1>
       </div>
     </div>
-    <form class="form">
+    <form class="form" [formGroup]="signupForm" (ngSubmit)="handleSubmit()">
       <h1>Inscription:</h1>
 
       <label>Nom:</label>
@@ -22,6 +22,7 @@
         class="input"
         type="text"
         required
+        formControlName="nom"
       />
 
       <label>Email:</label>
@@ -29,6 +30,7 @@
         class="input"
         type="email"
         required
+        formControlName="email"
       />
 
       <label>CIN:</label>
@@ -36,6 +38,7 @@
         class="input"
         type="text"
         required
+        formControlName="cin"
       />
 
       <label>Numéro de téléphone:</label>
@@ -43,6 +46,7 @@
         class="input"
         type="text"
         required
+        formControlName="telephone"
       />
 
       <label>Mot de passe:</label>
@@ -50,6 +54,7 @@
         class="input"
         type="password"
         required
+        formControlName="mot_de_passe"
       />
 
       <label>Confirmation du mot de passe:</label>
@@ -57,9 +62,10 @@
         class="input"
         type="password"
         required
+        formControlName="confirm_mot_de_passe"
       />
 
-      <button class="button" type="submit">
+      <button class="button" [disabled]="signupForm.invalid">
         S'inscrire
       </button>
       <span>Tu as déjà un compte ? Connecte-toi <a routerLink="/">ici</a></span>

@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
-  show = true;
+  show = false;
 
   closeSidebar() {
     this.show = false;

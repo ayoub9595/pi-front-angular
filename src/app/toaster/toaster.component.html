@@ -1,0 +1,4 @@
+<div *ngIf="message" class="container" [ngClass]="className">
+  <span>{{ message }}</span>
+  <button (click)="close()" class="exit-button" [ngClass]="className === 'error' ? 'error-button' : ''">×</button>
+</div>

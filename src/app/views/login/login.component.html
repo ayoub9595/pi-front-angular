@@ -14,21 +14,23 @@
         <h1>Parc Informatique</h1>
       </div>
     </div>
-    <form class="form">
+    <form [formGroup]="loginForm" class="form" (ngSubmit)="handleSubmit()">
       <h1>Connexion:</h1>
       <label>Nom d'utilisateur:</label>
       <input
         class="input"
         type="email"
-      required
+        formControlName="email"
+        required
       />
       <label>Mot de passe:</label>
       <input
         class="input"
         type="password"
+        formControlName="mot_de_passe"
         required
       />
-      <button class="button" type="submit">Se Connecter</button>
+      <button class="button" type="submit" [disabled]="loginForm.invalid">Se Connecter</button>
 
       <span>Tu n'as pas encore de compte ? Inscris-toi <a routerLink="/signup">ici</a> </span>
     </form>
