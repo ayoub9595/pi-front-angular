@@ -8,13 +8,15 @@ import {DeleteIconComponent} from '../components/icons/delete-icon/delete-icon.c
 import { EquipementListComponent } from './views/equipement-list/equipement-list.component';
 import {EditIconComponent} from '../components/icons/edit-icon/edit-icon.component';
 import {LoaderComponent} from '../components/loader/loader.component';
+import { EditEquipementComponent } from './views/edit-equipement/edit-equipement.component';
 
 
 
 @NgModule({
   declarations: [
     AddEquipementComponent,
-    EquipementListComponent
+    EquipementListComponent,
+    EditEquipementComponent
   ],
   imports: [
     CommonModule,

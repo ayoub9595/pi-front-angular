@@ -17,4 +17,11 @@ export class EquipementService {
   getAllEquipements() {
     return this.http.get<Equipement[]>(`${this.apiUrl}/`)
   }
+
+  getEquipementById(id: number) {
+    return this.http.get<Equipement>(`${this.apiUrl}/${id}`)
+  }
+  editEquipement(id: number, equipement: Equipement) {
+    return this.http.put<Equipement>(`${this.apiUrl}/${id}`, equipement)
+  }
 }

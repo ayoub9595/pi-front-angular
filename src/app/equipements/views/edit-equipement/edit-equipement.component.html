@@ -1,0 +1,61 @@
+<loader *ngIf="isLoading"></loader>
+
+<div *ngIf="!isLoading" >
+  <h2>Modifier un équipement</h2>
+  <form class="form" [formGroup]="equipementForm" (ngSubmit)="handleSubmit()">
+    <label>Nom:</label>
+    <input class="input" formControlName="nom" required />
+    <label>Description:</label>
+    <textarea class="input" formControlName="description"></textarea>
+
+    <label>Numéro de série:</label>
+    <input class="input" formControlName="numero_serie" required />
+
+    <label>Date d'acquisition:</label>
+    <input class="input" type="date" formControlName="date_acquisition" required />
+
+    <label>Date de maintenance prévue:</label>
+    <input class="input" type="date" formControlName="maintenance_prevue" />
+
+    <label>
+      Actif:
+      <input type="checkbox" formControlName="est_actif" />
+    </label>
+
+    <div class="caracteristiques-headers">
+      <h4>Caractéristiques</h4>
+      <button
+        type="button"
+        class="button add-caracteristique"
+        (click)="addCaracteristique()"
+      >
+        ➕
+      </button>
+    </div>
+
+    <div formArrayName="caracteristiques">
+      <div
+        *ngFor="let carac of caracteristiques.controls; let i = index"
+        [formGroupName]="i"
+        class="caracteristique"
+      >
+        <div class="caracteristique-section">
+          <label>Nom:</label>
+          <input class="input" formControlName="caracteristique" />
+        </div>
+        <div class="caracteristique-section">
+          <label>Valeur:</label>
+          <input class="input" formControlName="valeur" />
+        </div>
+        <button class="button" type="button" (click)="removeCaracteristique(i)">
+          <delete-icon></delete-icon>
+        </button>
+      </div>
+    </div>
+
+    <button class="button" [disabled]="equipementForm.invalid">
+      Enregistrer
+    </button>
+  </form>
+</div>
+

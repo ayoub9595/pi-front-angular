@@ -16,7 +16,7 @@
   <div class="header">
     <h2>Liste des Équipements</h2>
     <div>
-      <button class="add-button">➕</button>
+      <button class="add-button" (click)="goToAddEquipement()">➕</button>
     </div>
   </div>
   <table class="table">
@@ -49,10 +49,10 @@
       </td>
       <td>
         <div class="action-buttons">
-          <button class="action-button edit-btn">
+          <button class="action-button edit-btn" (click)="goToEditEquipement(eq.id!)">
             <edit-icon></edit-icon>
           </button>
-          <button class="action-button delete-btn">
+          <button class="action-button delete-btn" (click)="handleDelete()">
             <delete-icon></delete-icon>
           </button>
         </div>

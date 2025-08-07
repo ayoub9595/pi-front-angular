@@ -24,8 +24,8 @@ export class EquipementListComponent implements OnInit {
   ngOnInit() {
     this.isLoading = true;
     this.equipementService.getAllEquipements().subscribe({
-      next: data => {
-        this.equipements = data;
+      next: equipements => {
+        this.equipements = equipements;
         this.isLoading = false;
       },
       error: error => {
@@ -36,6 +36,13 @@ export class EquipementListComponent implements OnInit {
   }
   goToAddEquipement() {
     this.router.navigate(['add'],{relativeTo: this.route});
+  }
+
+  goToEditEquipement(id: number) {
+    this.router.navigate(['edit/'+id],{relativeTo: this.route});
+  }
+  handleDelete() {
+    console.log('handleDeleteEquipement');
   }
 
 }

@@ -51,7 +51,7 @@ export class SignupComponent implements OnInit {
             next: ({access_token,refresh_token}) => {
               localStorage.setItem('access_token', access_token);
               localStorage.setItem('refresh_token', refresh_token);
-              this.router.navigate(['/home']);
+              this.router.navigate(['/home/equipements']);
             },
             error: error => {
               const errorMsg = error?.error?.msg || 'Une erreur est survenue';
