@@ -20,7 +20,7 @@ import { LogoutIconComponent } from './components/icons/logout-icon/logout-icon.
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {provideHttpClient, withInterceptors} from '@angular/common/http';
-import { ToasterComponent } from './toaster/toaster.component';
+import { ToasterComponent } from './components/toaster/toaster.component';
 import {AuthInterceptor} from './core/interceptors/auth.interceptor';
 
 

@@ -9,6 +9,7 @@ import { EquipementListComponent } from './views/equipement-list/equipement-list
 import {EditIconComponent} from '../components/icons/edit-icon/edit-icon.component';
 import {LoaderComponent} from '../components/loader/loader.component';
 import { EditEquipementComponent } from './views/edit-equipement/edit-equipement.component';
+import {ConfirmModalComponent} from '../components/confirm-modal/confirm-modal.component';
 
 
 
@@ -24,7 +25,8 @@ import { EditEquipementComponent } from './views/edit-equipement/edit-equipement
     ReactiveFormsModule,
     DeleteIconComponent,
     EditIconComponent,
-    LoaderComponent
+    LoaderComponent,
+    ConfirmModalComponent
   ]
 })
 export class EquipementsModule { }

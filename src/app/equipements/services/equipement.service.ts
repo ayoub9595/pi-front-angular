@@ -24,4 +24,7 @@ export class EquipementService {
   editEquipement(id: number, equipement: Equipement) {
     return this.http.put<Equipement>(`${this.apiUrl}/${id}`, equipement)
   }
+  deleteEquipementById(id: number) {
+    return this.http.delete<{message: string }>(`${this.apiUrl}/${id}`)
+  }
 }

@@ -1,0 +1,13 @@
+<div class="modal-overlay">
+  <div class="modal">
+    <div class="title">
+      {{ title }}
+      <span class="exit" (click)="handleCancel()">X</span>
+    </div>
+    <p>{{ message }}</p>
+    <div class="modal-actions">
+      <button (click)="handleConfirm()" class="confirm-button">Oui</button>
+      <button (click)="handleCancel()" class="cancel-button">Non</button>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,12 @@
 <loader *ngIf="isLoading"></loader>
 
+<confirm-modal *ngIf="showModal"
+               [title]="'Attention'"
+               [message]="'Voulez vous vraiment supprimer cet equipement ?'"
+               (confirm)="deleteEquipement()"
+               (cancel)="closeModal()"
+></confirm-modal>
+
 <div *ngIf="equipements.length === 0 && !isLoading" class="no-equipment-container">
   <div class="header">
     <h2>Liste des Équipements</h2>
@@ -52,7 +59,7 @@
           <button class="action-button edit-btn" (click)="goToEditEquipement(eq.id!)">
             <edit-icon></edit-icon>
           </button>
-          <button class="action-button delete-btn" (click)="handleDelete()">
+          <button class="action-button delete-btn" (click)="handleDelete(eq.id!)">
             <delete-icon></delete-icon>
           </button>
         </div>
