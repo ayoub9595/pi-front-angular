@@ -21,7 +21,7 @@ import { DashboardComponent } from './views/dashboard/dashboard.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {provideHttpClient, withInterceptors} from '@angular/common/http';
 import { ToasterComponent } from './components/toaster/toaster.component';
-import {AuthInterceptor} from './core/interceptors/auth.interceptor';
+import {AuthInterceptor, ErrorHandlerInterceptor} from './core/interceptors/auth.interceptor';
 
 
 @NgModule({
@@ -51,7 +51,7 @@ import {AuthInterceptor} from './core/interceptors/auth.interceptor';
   ],
   providers: [
     provideHttpClient(
-      withInterceptors([AuthInterceptor])
+      withInterceptors([AuthInterceptor,ErrorHandlerInterceptor])
     )
   ],
   bootstrap: [AppComponent]
