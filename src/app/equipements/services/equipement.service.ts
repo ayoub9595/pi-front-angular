@@ -14,4 +14,7 @@ export class EquipementService {
   addEquipement(equipement: Equipement) {
     return this.http.post<Equipement>(`${this.apiUrl}/`, equipement)
   }
+  getAllEquipements() {
+    return this.http.get<Equipement[]>(`${this.apiUrl}/`)
+  }
 }

@@ -61,7 +61,7 @@ export class AddEquipementComponent implements OnInit {
       this.equipementService.addEquipement(this.equipementForm.value).subscribe({
         next: () => {
           this.toaster.showToast('Equipement ajouté avec succès',"success")
-          this.router.navigate(['/home']);
+          this.router.navigate(['/home/equipements']);
         },
         error: error => {
           const errorMsg = error?.error?.msg || 'Une erreur est survenue';
