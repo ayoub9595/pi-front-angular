@@ -5,6 +5,7 @@ import { Signup } from '../models/Signup';
 import { jwtDecode } from 'jwt-decode';
 
 interface JwtPayload {
+  sub: string;
   exp: number;
   role?: string;
   email?: string;
@@ -35,6 +36,16 @@ export class AuthenticationService {
       }
     }
     return 'UTILISATEUR';
+  }
+
+  getCurrentUserId() {
+    const token = localStorage.getItem('access_token');
+    if (token) {
+      const {sub} = jwtDecode<JwtPayload>(token);
+      return parseInt(sub, 10);
+    }
+    return null;
+
   }
 
   isLoggedIn(): boolean {

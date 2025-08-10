@@ -7,12 +7,19 @@ import {LoaderComponent} from '../components/loader/loader.component';
 import {EditIconComponent} from '../components/icons/edit-icon/edit-icon.component';
 import {DeleteIconComponent} from '../components/icons/delete-icon/delete-icon.component';
 import {ShowIconComponent} from '../components/show-icon/show-icon.component';
+import { UserCardInfoComponent } from './components/user-card-info/user-card-info.component';
+import { EquipementCardInfoComponent } from './components/equipement-card-info/equipement-card-info.component';
+import { AffectationDetailsComponent } from './views/affectation-details/affectation-details.component';
+import {InfoModalComponent} from '../components/info-modal/info-modal.component';
 
 
 
 @NgModule({
   declarations: [
-    AffectationListComponent
+    AffectationListComponent,
+    UserCardInfoComponent,
+    EquipementCardInfoComponent,
+    AffectationDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +28,8 @@ import {ShowIconComponent} from '../components/show-icon/show-icon.component';
     LoaderComponent,
     EditIconComponent,
     DeleteIconComponent,
-    ShowIconComponent
+    ShowIconComponent,
+    InfoModalComponent
   ]
 })
 export class AffectationsModule { }

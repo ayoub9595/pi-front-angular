@@ -23,7 +23,7 @@ export const redirectIfAuthenticatedGuard: CanActivateFn = () => {
     return router.parseUrl('/home/equipements');
   }
   else if (authenticationService.isLoggedIn()) {
-    return router.parseUrl('/home/dashboard');
+    return router.parseUrl('/home/affectations');
   }
 
   return true;

@@ -1,0 +1,14 @@
+<info-modal [title]="'Détails de l\'affectation'" (close)="handleCloseModal()">
+  <div class="affectation-infos">
+    <p class="p"><strong>Affectation determinée ?</strong> {{affectation.determine ? '✅' : '❌'}}</p>
+    <p class="p"><strong>Date de debut:</strong> {{affectation.date_debut.split("T")[0] || "-" }}</p>
+    <ng-container *ngIf="affectation.determine">
+    <p class="p"><strong>Date de fin:</strong> {{ affectation.date_fin!.split("T")[0] || "-" }}</p>
+    </ng-container>
+  </div>
+  <h3>Utilisateur</h3>
+  <user-card-info [user]="affectation.utilisateur"></user-card-info>
+  <h3>Equipement</h3>
+  <equipement-card-info [equipment]="affectation.equipement"></equipement-card-info>
+
+</info-modal>

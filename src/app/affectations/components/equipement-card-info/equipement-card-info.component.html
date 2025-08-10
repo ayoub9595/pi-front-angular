@@ -1,0 +1,12 @@
+<div class="card">
+  <p><strong>Nom :</strong> {{ equipment.nom || "N/A" }}</p>
+  <p><strong>Description :</strong> {{ equipment.description || "N/A" }}</p>
+  <p><strong>N° Série :</strong> {{ equipment.numero_serie || "N/A" }}</p>
+  <p><strong>Caracteristiques :</strong></p>
+  <ul *ngIf="equipment.caracteristiques && equipment.caracteristiques.length > 0">
+  <li  *ngFor="let carac of equipment.caracteristiques">
+    {{ carac.caracteristique }}: {{ carac.valeur }}
+  </li>
+  </ul>
+
+</div>

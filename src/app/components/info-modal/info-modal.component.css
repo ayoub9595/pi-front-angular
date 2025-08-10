@@ -1,0 +1,33 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1002;
+}
+
+.modal {
+  padding: 10px;
+  background: white;
+  border-radius: 8px;
+  width: 50vw;
+  max-height: 90vh;
+  overflow-y: scroll;
+}
+
+.title {
+  padding-bottom: 10px;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+  font-weight: bold;
+}
+.exit {
+  cursor: pointer;
+}

@@ -1,0 +1,11 @@
+<div class="modal-overlay">
+  <div class="modal">
+    <div class="title">
+      {{ title }}
+      <span class="exit" (click)="closeModal()">X</span>
+    </div>
+    <div class="modal-content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

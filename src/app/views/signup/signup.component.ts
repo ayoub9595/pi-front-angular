@@ -55,7 +55,7 @@ export class SignupComponent implements OnInit {
                 this.router.navigate(['/home/equipements']);
               }
               else {
-                this.router.navigate(['/home/dashboard']);
+                this.router.navigate(['/home/affectations']);
               }
             },
             error: error => {
