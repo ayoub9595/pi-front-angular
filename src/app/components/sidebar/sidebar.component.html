@@ -1,5 +1,54 @@
 <div
-  [ngClass]="{'sidebar': true, 'show-sidebar': show}"
+  [ngClass]="{
+    'sidebar': true,
+    'show-sidebar': show,
+    'admin': isAdmin,
+    'utilisateur': !isAdmin
+  }"
 >
-<button class="exit-button" (click)="handleChangeShow()">×</button>
+  <button class="exit-button" (click)="handleChangeShow()">×</button>
+
+  <nav
+    [ngClass]="{
+      'nav': true,
+      'admin-nav': isAdmin,
+      'utilisateur-nav': !isAdmin
+    }"
+  >
+    <div
+      class="section"
+      *ngFor="let item of navigationData[role]; let i = index"
+    >
+      <div *ngIf="item.isToggleable">
+        <button
+          class="section-toggle"
+          (click)="toggleSection(item.id)"
+        >
+          <span>{{ item.title }}</span>
+          <span
+            class="toggle-arrow"
+            [class.toggle-arrow-open]="openSections[item.id]"
+          >
+            ▼
+          </span>
+        </button>
+
+        <div
+          class="section-content"
+          [class.section-content-open]="openSections[item.id]"
+        >
+          <a
+            *ngFor="let subLink of item.subLinks"
+            [routerLink]="subLink.to"
+            class="admin-link sub-link"
+            (click)="handleChangeShow()"
+          >
+            {{ subLink.label }}
+          </a>
+        </div>
+      </div>
+
+      <div *ngIf="i !== navigationData[role].length - 1" class="section-divider"></div>
+    </div>
+  </nav>
 </div>

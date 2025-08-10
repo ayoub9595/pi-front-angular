@@ -24,7 +24,6 @@ export const ErrorHandlerInterceptor: HttpInterceptorFn = (req, next) => {
 
   return next(req).pipe(
     catchError(error => {
-      // Redirect only if the error is 401 Unauthorized
       if (error.status === 401) {
         localStorage.clear()
         router.navigate(['/']);

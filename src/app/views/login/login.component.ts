@@ -38,7 +38,13 @@ export class LoginComponent implements OnInit {
       next: ({access_token,refresh_token}) => {
         localStorage.setItem('access_token', access_token);
         localStorage.setItem('refresh_token', refresh_token);
-        this.router.navigate(['/home/equipements']);
+        if(this.authenticationService.isAdmin()) {
+          this.router.navigate(['/home/equipements']);
+        }
+        else {
+          this.router.navigate(['/home/dashboard']);
+        }
+
       },
       error: error => {
         const errorMsg = error?.error?.msg || 'Une erreur est survenue';

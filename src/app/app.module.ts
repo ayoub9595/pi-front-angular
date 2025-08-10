@@ -21,8 +21,9 @@ import { DashboardComponent } from './views/dashboard/dashboard.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {provideHttpClient, withInterceptors} from '@angular/common/http';
 import { ToasterComponent } from './components/toaster/toaster.component';
-import {AuthInterceptor, ErrorHandlerInterceptor} from './core/interceptors/auth.interceptor';
-
+import {AuthInterceptor, ErrorHandlerInterceptor} from './interceptors/auth.interceptor';
+import { NotFoundComponent } from './views/not-found/not-found.component';
+import { AccessDeniedComponent } from './views/access-denied/access-denied.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,9 @@ import {AuthInterceptor, ErrorHandlerInterceptor} from './core/interceptors/auth
     LogoutIconComponent,
     DashboardComponent,
     ToasterComponent,
+    DashboardComponent,
+    NotFoundComponent,
+    AccessDeniedComponent
   ],
   imports: [
     BrowserModule,
