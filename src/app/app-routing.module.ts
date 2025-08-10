@@ -22,7 +22,8 @@ const routes: Routes = [
 
       },
       {
-        path: 'dashboard', component: DashboardComponent
+        path: 'affectations',
+        loadChildren: () => import('./affectations/affectations.module').then(m => m.AffectationsModule),
       }
     ]
   },
