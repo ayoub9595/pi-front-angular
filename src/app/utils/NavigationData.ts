@@ -15,7 +15,7 @@ export const navigationData = {
       isToggleable: true,
       subLinks: [
         { to: "/home/affectations", label: "Liste des affectations" },
-        { to: "/home/affectations/create", label: "Créer une affectation" }
+        { to: "/home/affectations/add", label: "Créer une affectation" }
       ]
     },
     {

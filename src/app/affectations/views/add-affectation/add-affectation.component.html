@@ -1,0 +1,74 @@
+<h2>Créer une Affectation</h2>
+<form class="form" [formGroup]="affectationForm" (ngSubmit)="handleSubmit()">
+  <label>
+    Équipement :
+  </label>
+  <div class="select-section">
+    <select
+      required
+      class="input"
+      formControlName="equipement"
+    >
+      <option value="">-- Sélectionner un équipement --</option>
+      <option *ngFor="let eq of unassignedEquipements" [value]="eq.id">
+      {{ eq.nom || "Sans description" }}
+      </option>
+    </select>
+   <show-icon (click)="showEquipementDetails()" [size]="30"></show-icon>
+  </div>
+
+  <label>
+    Utilisateur :
+  </label>
+  <div class="select-section">
+    <select
+      required
+      class="input"
+      formControlName="utilisateur"
+    >
+      <option value="">-- Sélectionner un utilisateur --</option>
+      <option *ngFor="let user of utilisateurs" [value]="user.id">
+        {{ user.nom }}
+      </option>
+    </select>
+    <show-icon (click)="showUtilisateurDetails()" [size]="30"></show-icon>
+  </div>
+
+
+  <label>Date Début* :</label>
+  <input
+    type="date"
+    required
+    class="input"
+    formControlName="date_debut"
+  />
+
+  <label>
+    <input
+      type="checkbox"
+      class="checkbox"
+      formControlName="determine"
+    />{{" "}}
+    Déterminé
+  </label>
+
+  <ng-container *ngIf="affectationForm.get('determine')?.value">
+    <label>Date Fin :</label>
+    <input
+      type="date"
+      formControlName="date_fin"
+      class="input"
+    />
+  </ng-container>
+
+  <button class="button">
+    Enregistrer
+  </button>
+</form>
+<info-modal title="Informations Equipement"  *ngIf="showEquipement" (close)="showEquipement=false" >
+  <equipement-card-info [equipment]="selectedEquipement!"></equipement-card-info>
+</info-modal>
+<info-modal title="Informations Utilisateur" *ngIf="showUtilisateur"  (close)="showUtilisateur=false">
+  <user-card-info [user]="selectedUser!"></user-card-info>
+</info-modal>
+

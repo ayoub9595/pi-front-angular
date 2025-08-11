@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'show-icon',
@@ -8,5 +8,10 @@ import {Component, Input} from '@angular/core';
 })
 export class ShowIconComponent {
   @Input() size!: number;
+  @Output() click = new EventEmitter();
+
+  handleClick() {
+    this.click.emit();
+  }
 
 }

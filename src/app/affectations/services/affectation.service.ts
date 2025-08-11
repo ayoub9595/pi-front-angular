@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Affectation} from '../models/Affectation';
+import {Affectation, AffectationForAdd} from '../models/Affectation';
 import {AuthenticationService} from '../../services/authentication.service';
 
 @Injectable({
@@ -23,4 +23,8 @@ export class AffectationService {
     }
 
   }
+  addAffectation(affectation: AffectationForAdd) {
+    return this.http.post<Affectation>(`${this.apiURl}/`,affectation)
+  }
+
 }

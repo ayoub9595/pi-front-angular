@@ -27,4 +27,7 @@ export class EquipementService {
   deleteEquipementById(id: number) {
     return this.http.delete<{message: string }>(`${this.apiUrl}/${id}`)
   }
+  getUnsassignedEquipements() {
+    return this.http.get<Equipement[]>(`${this.apiUrl}/unassigned`)
+  }
 }

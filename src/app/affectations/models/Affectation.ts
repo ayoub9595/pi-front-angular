@@ -17,3 +17,12 @@ export interface Utilsateur {
   telephone: string;
   role: string;
 }
+
+export interface AffectationForAdd {
+  determine: boolean;
+  date_debut: string;
+  date_fin?: string;
+  id_equipement: number;
+  id_utilisateur: number;
+
+}

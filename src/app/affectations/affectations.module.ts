@@ -11,6 +11,8 @@ import { UserCardInfoComponent } from './components/user-card-info/user-card-inf
 import { EquipementCardInfoComponent } from './components/equipement-card-info/equipement-card-info.component';
 import { AffectationDetailsComponent } from './views/affectation-details/affectation-details.component';
 import {InfoModalComponent} from '../components/info-modal/info-modal.component';
+import { AddAffectationComponent } from './views/add-affectation/add-affectation.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -19,17 +21,19 @@ import {InfoModalComponent} from '../components/info-modal/info-modal.component'
     AffectationListComponent,
     UserCardInfoComponent,
     EquipementCardInfoComponent,
-    AffectationDetailsComponent
+    AffectationDetailsComponent,
+    AddAffectationComponent
   ],
-  imports: [
-    CommonModule,
-    AffectationsRoutingModule,
-    ConfirmModalComponent,
-    LoaderComponent,
-    EditIconComponent,
-    DeleteIconComponent,
-    ShowIconComponent,
-    InfoModalComponent
-  ]
+    imports: [
+        CommonModule,
+        AffectationsRoutingModule,
+        ConfirmModalComponent,
+        LoaderComponent,
+        EditIconComponent,
+        DeleteIconComponent,
+        ShowIconComponent,
+        InfoModalComponent,
+        ReactiveFormsModule
+    ]
 })
 export class AffectationsModule { }
