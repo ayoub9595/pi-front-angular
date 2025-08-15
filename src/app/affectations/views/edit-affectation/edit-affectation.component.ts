@@ -1,20 +1,20 @@
 import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Equipement} from '../../../equipements/models/Equipement';
 import {AffectationForPersist, Utilsateur} from '../../models/Affectation';
 import {EquipementService} from '../../../equipements/services/equipement.service';
-import {ToasterService} from '../../../services/toaster.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UtilisateurService} from '../../../services/utilisateur.service';
 import {AffectationService} from '../../services/affectation.service';
+import {ToasterService} from '../../../services/toaster.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-  selector: 'app-add-affectation',
+  selector: 'app-edit-affectation',
   standalone: false,
-  templateUrl: './add-affectation.component.html',
-  styleUrl: './add-affectation.component.css'
+  templateUrl: './edit-affectation.component.html',
+  styleUrl: './edit-affectation.component.css'
 })
-export class AddAffectationComponent implements OnInit {
+export class EditAffectationComponent implements OnInit {
   affectationForm!: FormGroup;
   unassignedEquipements: Equipement[] = [];
   utilisateurs: Utilsateur[] = [];
@@ -70,6 +70,19 @@ export class AddAffectationComponent implements OnInit {
         this.toaster.showToast(errorMessage,"error");
       }
     })
+    const id = this.route.snapshot.params['id'];
+    this.affectationService.getAffectationById(id).subscribe({
+      next: affectation => {
+        this.unassignedEquipements = [affectation.equipement,...this.unassignedEquipements];
+        this.affectationForm.patchValue({
+          equipement: affectation.equipement.id,
+          utilisateur: affectation.utilisateur.id,
+          date_debut: affectation.date_debut.split('T')[0],
+          determine: affectation.determine,
+          date_fin: affectation.determine ? affectation.date_fin!.split('T')[0] : null,
+        })
+      }
+    })
   }
 
   showEquipementDetails() {
@@ -85,18 +98,20 @@ export class AddAffectationComponent implements OnInit {
     else this.showUtilisateur = true;
   }
 
+
   handleSubmit() {
-    const affectation :AffectationForPersist= {
+    const id =  this.route.snapshot.params['id']
+    const affectation : AffectationForPersist= {
       determine: this.affectationForm.value.determine,
       date_debut: this.affectationForm.value.date_debut,
       date_fin: this.affectationForm.value.determine ? this.affectationForm.value.date_debut : null,
       id_equipement: parseInt(this.affectationForm.value.equipement),
       id_utilisateur: parseInt(this.affectationForm.value.utilisateur),
     }
-    this.affectationService.addAffectation(affectation).subscribe({
+    this.affectationService.updateAffectation(id,affectation).subscribe({
       next: () => {
         this.toaster.showToast('Affectation ajoutée avec succès','success');
-        this.router.navigate(['..'],{relativeTo: this.route})
+        this.router.navigate(['../..'],{relativeTo: this.route})
       },
       error: error => {
         const errorMessage = error.error.message || error.error.msg || 'Une erreur est survenue';
@@ -104,6 +119,5 @@ export class AddAffectationComponent implements OnInit {
       }
     })
   }
-
 
 }

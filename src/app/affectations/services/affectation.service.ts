@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Affectation, AffectationForAdd} from '../models/Affectation';
+import {Affectation, AffectationForPersist} from '../models/Affectation';
 import {AuthenticationService} from '../../services/authentication.service';
 
 @Injectable({
@@ -23,8 +23,14 @@ export class AffectationService {
     }
 
   }
-  addAffectation(affectation: AffectationForAdd) {
+  addAffectation(affectation: AffectationForPersist) {
     return this.http.post<Affectation>(`${this.apiURl}/`,affectation)
+  }
+  getAffectationById(id: number) {
+    return this.http.get<Affectation>(`${this.apiURl}/${id}`)
+  }
+  updateAffectation(id:number,affectation: AffectationForPersist) {
+    return this.http.put<Affectation>(`${this.apiURl}/${id}`,affectation)
   }
 
 }

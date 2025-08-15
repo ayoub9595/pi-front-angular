@@ -18,7 +18,7 @@ export interface Utilsateur {
   role: string;
 }
 
-export interface AffectationForAdd {
+export interface AffectationForPersist {
   determine: boolean;
   date_debut: string;
   date_fin?: string;

@@ -55,6 +55,7 @@ export class AffectationListComponent implements OnInit {
   }
 
   handleUpdate(id: number) {
+    this.router.navigate(['edit',id], {relativeTo: this.route});
 
   }
 
