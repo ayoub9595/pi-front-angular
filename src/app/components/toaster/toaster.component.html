@@ -1,4 +1,10 @@
-<div *ngIf="message" class="container" [ngClass]="className">
+<div *ngIf="isVisible" [class]="getContainerClasses()">
   <span>{{ message }}</span>
-  <button (click)="close()" class="exit-button" [ngClass]="className === 'error' ? 'error-button' : ''">×</button>
+  <button
+    (click)="close()"
+    class="exit-button"
+    [ngClass]="className === 'error' ? 'error-button' : ''"
+    aria-label="Close notification">
+    ×
+  </button>
 </div>
