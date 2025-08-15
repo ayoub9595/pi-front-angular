@@ -13,7 +13,12 @@
 </div>
 </div>
 
-<!--  <confirm-modal></confirm-modal>-->
+<confirm-modal *ngIf="showModal"
+               [title]="'Attention'"
+               [message]="'Voulez vous vraiment supprimer cette affectation ?'"
+               (confirm)="deleteAffectation()"
+               (cancel)="closeModal()"
+></confirm-modal>
 
 <affectation-details *ngIf="showInfoModal" [affectation]="selectedAffectation!" (close)="showInfoModal = false">
 </affectation-details>
