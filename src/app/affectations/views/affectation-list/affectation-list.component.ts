@@ -67,6 +67,8 @@ export class AffectationListComponent implements OnInit {
   }
 
   deleteAffectation() {
+    this.isLoading = true;
+    this.showModal = false;
     this.affectationService.deleteAffectationById(this.affectationIdToDelete!).subscribe({
       next: ({msg:message}) => {
         console.log(message)
@@ -74,14 +76,14 @@ export class AffectationListComponent implements OnInit {
         if(index >= -1) {
           this.affectations.splice(index, 1);
           this.affectationIdToDelete =  null
-          this.showModal = false;
+          this.isLoading = false;
           this.toast.showToast(message,'success');
         }
       },
       error: error => {
         const errorMessage = error.error.message || 'Une erreur est survenue.';
-        this.showModal = false;
         this.affectationIdToDelete =  null;
+        this.isLoading = false;
         this.toast.showToast(errorMessage,'error');
       }
     })

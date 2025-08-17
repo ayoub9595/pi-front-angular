@@ -63,4 +63,16 @@ export class AuthenticationService {
   isAdmin(): boolean {
     return this.getCurrentUserRole() === 'ADMIN';
   }
+
+  refreshToken(refreshToken: string) {
+    return this.http.post<LoginResponse>(
+      `${this.apiUrl}/refresh`,
+      {}, // empty body
+      {
+        headers: {
+          Authorization: `Bearer ${refreshToken}`
+        }
+      }
+    );
+  }
 }

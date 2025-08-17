@@ -22,6 +22,7 @@ export class EditAffectationComponent implements OnInit {
   selectedEquipement: Equipement | null = null;
   showEquipement = false;
   showUtilisateur = false;
+  isLoading = true
 
   constructor(
     private fb: FormBuilder,
@@ -35,7 +36,6 @@ export class EditAffectationComponent implements OnInit {
   }
 
   ngOnInit(){
-
     this.affectationForm = this.fb.group({
       equipement: ['', Validators.required],
       utilisateur: ['', Validators.required],
@@ -81,6 +81,11 @@ export class EditAffectationComponent implements OnInit {
           determine: affectation.determine,
           date_fin: affectation.determine ? affectation.date_fin!.split('T')[0] : null,
         })
+        this.isLoading = false;
+      },
+      error: error => {
+        const  errorMessage = error.error.message || error.error.msg || 'Une erreur est survenue';
+        this.toaster.showToast(errorMessage,"error");
       }
     })
   }
@@ -108,14 +113,17 @@ export class EditAffectationComponent implements OnInit {
       id_equipement: parseInt(this.affectationForm.value.equipement),
       id_utilisateur: parseInt(this.affectationForm.value.utilisateur),
     }
+    this.isLoading = true;
     this.affectationService.updateAffectation(id,affectation).subscribe({
       next: () => {
         this.toaster.showToast('Affectation ajoutée avec succès','success');
         this.router.navigate(['../..'],{relativeTo: this.route})
+        this.isLoading = false;
       },
       error: error => {
         const errorMessage = error.error.message || error.error.msg || 'Une erreur est survenue';
         this.toaster.showToast(errorMessage,"error");
+        this.isLoading = false;
       }
     })
   }

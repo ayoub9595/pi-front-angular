@@ -22,6 +22,7 @@ export class AddAffectationComponent implements OnInit {
   selectedEquipement: Equipement | null = null;
   showEquipement = false;
   showUtilisateur = false;
+  isLoading = false;
 
   constructor(
     private fb: FormBuilder,
@@ -86,6 +87,7 @@ export class AddAffectationComponent implements OnInit {
   }
 
   handleSubmit() {
+    this.isLoading = true;
     const affectation :AffectationForPersist= {
       determine: this.affectationForm.value.determine,
       date_debut: this.affectationForm.value.date_debut,
@@ -95,10 +97,12 @@ export class AddAffectationComponent implements OnInit {
     }
     this.affectationService.addAffectation(affectation).subscribe({
       next: () => {
+        this.isLoading = false;
         this.toaster.showToast('Affectation ajoutée avec succès','success');
         this.router.navigate(['..'],{relativeTo: this.route})
       },
       error: error => {
+        this.isLoading = false;
         const errorMessage = error.error.message || error.error.msg || 'Une erreur est survenue';
         this.toaster.showToast(errorMessage,"error");
       }

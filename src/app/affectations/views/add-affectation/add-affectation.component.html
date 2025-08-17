@@ -1,3 +1,5 @@
+<loader *ngIf="isLoading" />
+<ng-container *ngIf="!isLoading">
 <h2>Créer une Affectation</h2>
 <form class="form" [formGroup]="affectationForm" (ngSubmit)="handleSubmit()">
   <label>
@@ -72,3 +74,4 @@
   <user-card-info [user]="selectedUser!"></user-card-info>
 </info-modal>
 
+</ng-container>
