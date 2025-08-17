@@ -4,7 +4,6 @@ import {LoginComponent} from './views/login/login.component';
 import {SignupComponent} from './views/signup/signup.component';
 import {HomeComponent} from './layout/home/home.component';
 import {adminGuard, authGuard, redirectIfAuthenticatedGuard} from './guards/auth.guard';
-import {DashboardComponent} from './views/dashboard/dashboard.component';
 import {NotFoundComponent} from './views/not-found/not-found.component';
 import {AccessDeniedComponent} from './views/access-denied/access-denied.component';
 
@@ -24,6 +23,10 @@ const routes: Routes = [
       {
         path: 'affectations',
         loadChildren: () => import('./affectations/affectations.module').then(m => m.AffectationsModule),
+      },
+      {
+        path: 'reclamations',
+        loadChildren:() => import('./reclamations/reclamations.module').then(m => m.ReclamationsModule),
       }
     ]
   },

@@ -42,7 +42,7 @@ export const navigationData = {
       title: "Réclamation",
       isToggleable: true,
       subLinks: [
-        { to: "/home/reclamations/create", label: "Faire une réclamation" },
+        { to: "/home/reclamations/add", label: "Faire une réclamation" },
         { to: "/home/reclamations", label: "Mes réclamations" }
       ]
     }

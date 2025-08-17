@@ -1,0 +1,11 @@
+<h2>Nouvelle Réclamation</h2>
+<form class="form" [formGroup]="reclamationForm" (ngSubmit)="handleSubmit()">
+  <label>Équipement concerné :</label>
+  <select class="input" formControlName="equipement">
+  <option value="">-- Choisissez un équipement --</option>
+  <option *ngFor="let equipement of equipements" [value]="equipement.id">{{ equipement.nom }} </option>
+  </select>
+  <label>Description du problème :</label>
+  <textarea class="textarea" rows="5" formControlName="description"></textarea>
+  <button class="button" [disabled]="reclamationForm.invalid">Envoyer</button>
+  </form>

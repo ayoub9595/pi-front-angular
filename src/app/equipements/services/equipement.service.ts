@@ -30,4 +30,7 @@ export class EquipementService {
   getUnsassignedEquipements() {
     return this.http.get<Equipement[]>(`${this.apiUrl}/unassigned`)
   }
+  getEquipementsActifsByUtilisateurId(id: number) {
+    return this.http.get<Equipement[]>(`${this.apiUrl}/utilisateur/${id}/equipements-actifs`)
+  }
 }
