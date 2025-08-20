@@ -1,0 +1,38 @@
+<info-modal title="Infos de la reclamation" (close)="handleClose()">
+  <h3>Utilisateur</h3>
+  <div class="reclamation-details">
+    <p><strong>Nom :</strong> {{ reclamation?.utilisateur?.nom || '—' }}</p>
+    <p><strong>Email :</strong> {{ reclamation?.utilisateur?.email || '—' }}</p>
+    <p><strong>Téléphone :</strong> {{ reclamation?.utilisateur?.telephone || '—' }}</p>
+    <p><strong>CIN :</strong> {{ reclamation?.utilisateur?.cin || '—' }}</p>
+  </div>
+
+  <h3>Équipement</h3>
+  <div class="reclamation-details">
+    <p><strong>Nom :</strong> {{ reclamation?.equipement?.nom || '—' }}</p>
+    <p><strong>Numéro de série :</strong> {{ reclamation?.equipement?.numero_serie || '—' }}</p>
+    <p><strong>Date d'acquisition :</strong> {{ reclamation?.equipement?.date_acquisition || '—' }}</p>
+    <p><strong>Maintenance prévue :</strong> {{ reclamation?.equipement?.maintenance_prevue || '—' }}</p>
+
+    <ng-container *ngIf="reclamation?.equipement?.caracteristiques!.length > 0">
+      <p><strong>Caractéristiques :</strong></p>
+      <ul class="ul">
+        <li *ngFor="let carac of reclamation?.equipement?.caracteristiques; let idx = index" class="li">
+          {{ carac?.caracteristique }}: {{ carac?.valeur }}
+        </li>
+      </ul>
+    </ng-container>
+  </div>
+
+  <h3>État de la demande:</h3>
+  <div class="reclamation-details">
+    <p><strong>État :</strong> {{ reclamation?.etat_reclamation || '—' }}</p>
+    <p><strong>Commentaire :</strong> {{ reclamation?.commentaire || '—' }}</p>
+  </div>
+
+  <div class="actions"
+       *ngIf="reclamation?.etat_reclamation === 'Non traitée' && !showProcessForm && isAdmin">
+    <button class="process-btn" (click)="handleAcceptClick()">Traiter</button>
+  </div>
+ <process-reclamation *ngIf="showProcessForm"  (submit)="handleProcess($event)" (cancel)="handleCloseProcess()" />
+</info-modal>

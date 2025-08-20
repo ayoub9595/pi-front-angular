@@ -50,14 +50,8 @@ export class AuthenticationService {
 
   isLoggedIn(): boolean {
     const token = localStorage.getItem('access_token');
-    if (!token) return false;
+    return !!token;
 
-    try {
-      const { exp } = jwtDecode<JwtPayload>(token);
-      return exp * 1000 > Date.now(); // Token not expired
-    } catch {
-      return false;
-    }
   }
 
   isAdmin(): boolean {

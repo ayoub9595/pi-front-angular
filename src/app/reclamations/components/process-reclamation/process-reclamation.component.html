@@ -1,0 +1,17 @@
+<div class="modal-background">
+  <div class="modal-content">
+    <h3>Traitement de la réclamation</h3>
+    <form [formGroup]="processForm"  class="form" (ngSubmit)="handleSubmit($event)">
+      <label>Statut de la demande:</label>
+      <select formControlName="etat_reclamation">
+       <option *ngFor="let status of reclamationsStatus" [value]="status">{{ status }}</option>
+      </select>
+      <label>Commentaire:</label>
+      <textarea formControlName="commentaire" rows="5"> </textarea>
+      <div class="buttons">
+        <button [disabled]="processForm.value.etat_reclamation === 'Non traitée'" class="submit-btn">Valider</button>
+        <button type="button" (click)="handleCancel()" class="cancel-btn">Annuler</button>
+      </div>
+    </form>
+  </div>
+</div>
