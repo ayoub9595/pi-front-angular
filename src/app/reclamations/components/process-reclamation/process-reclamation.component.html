@@ -9,7 +9,14 @@
       <label>Commentaire:</label>
       <textarea formControlName="commentaire" rows="5"> </textarea>
       <div class="buttons">
-        <button [disabled]="processForm.value.etat_reclamation === 'Non traitée'" class="submit-btn">Valider</button>
+        <button [disabled]="(processForm.value.etat_reclamation === 'Non traitée') || isLoading" class="submit-btn">
+          <ng-container *ngIf="isLoading; else validateText">
+            <loader-for-button></loader-for-button>
+          </ng-container>
+          <ng-template #validateText>
+            Valider
+          </ng-template>
+        </button>
         <button type="button" (click)="handleCancel()" class="cancel-btn">Annuler</button>
       </div>
     </form>

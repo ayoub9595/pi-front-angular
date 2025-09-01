@@ -12,6 +12,7 @@ export class ProcessReclamationComponent {
   reclamationsStatus =['Non traitée','Acceptée','Refusée']
   @Output() submit = new EventEmitter();
   @Output() cancel=new EventEmitter();
+  isLoading = false;
 
   constructor(private formBuilder: FormBuilder) {
     this.processForm = this.formBuilder.group({
@@ -21,8 +22,9 @@ export class ProcessReclamationComponent {
   }
 
   handleSubmit(event: Event) {
-    event.preventDefault(); // prevent bubbling
-    event.stopPropagation(); // avoid parent receiving the event
+    this.isLoading = true;
+    event.preventDefault();
+    event.stopPropagation();
     this.submit.emit(this.processForm.value);
   }
 

@@ -18,6 +18,7 @@ export class AddReclamationComponent implements OnInit {
   reclamationForm!: FormGroup;
   equipements: Equipement[] = [];
   currentUserId: number | null = null;
+  isLoading = false;
 
   constructor(
     private fb: FormBuilder,
@@ -47,6 +48,7 @@ export class AddReclamationComponent implements OnInit {
   }
 
   handleSubmit() {
+    this.isLoading = true
     const reclamation: ReclamationForPersistence = {
       id_utilisateur: this.currentUserId!,
       id_equipement: this.reclamationForm.value.equipement,
@@ -54,12 +56,14 @@ export class AddReclamationComponent implements OnInit {
     }
     this.reclamationService.addReclamationForm(reclamation).subscribe({
         next: () => {
+          this.isLoading = false
           this.toaster.showToast('Reclamation ajoutée avec succès',"success")
           this.router.navigate(['..'],{relativeTo: this.route});
         },
       error: error => {
           const errorMessage = error.error.message || error.error.msg || 'Une erreur est survenue';
           this.toaster.showToast(errorMessage, "error");
+          this.isLoading = false
       }
       }
     )

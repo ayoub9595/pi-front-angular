@@ -14,11 +14,11 @@
     </thead>
     <tbody>
      <tr *ngFor="let rec of reclamations">
-      <td>{{ rec.utilisateur?.nom ?? "—" }}</td>
-      <td>{{ rec.equipement?.nom ?? "—" }}</td>
-      <td>{{ rec.date_reclamation.split('T')[0] ?? "—" }}</td>
-      <td>{{ rec.description ?? "—" }}</td>
-      <td>{{ rec.etat_reclamation ?? "" }}</td>
+      <td>{{ rec.utilisateur.nom  }}</td>
+      <td>{{ rec.equipement.nom  }}</td>
+      <td>{{ rec.date_reclamation.split('T')[0] }}</td>
+      <td>{{ rec.description }}</td>
+      <td>{{ rec.etat_reclamation }}</td>
       <td>
        <button (click)="handleShowDetails(rec)" class="action-button show-btn" >
          <show-icon [size]="24"></show-icon>

@@ -9,6 +9,8 @@ import {ShowIconComponent} from "../components/show-icon/show-icon.component";
 import { ReclamationDetailsComponent } from './views/reclamation-details/reclamation-details.component';
 import {InfoModalComponent} from '../components/info-modal/info-modal.component';
 import { ProcessReclamationComponent } from './components/process-reclamation/process-reclamation.component';
+import {LoaderForButtonComponent} from "../components/loader-for-button/loader-for-button.component";
+import {LoaderComponent} from '../components/loader/loader.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { ProcessReclamationComponent } from './components/process-reclamation/pr
     ReclamationsRoutingModule,
     ReactiveFormsModule,
     ShowIconComponent,
-    InfoModalComponent
+    InfoModalComponent,
+    LoaderForButtonComponent,
+    LoaderComponent
   ]
 })
 export class ReclamationsModule { }
