@@ -17,7 +17,7 @@
   >
     <div
       class="section"
-      *ngFor="let item of navigationData[role]; let i = index"
+      *ngFor="let item of getNavigationData(); let i = index"
     >
       <div *ngIf="item.isToggleable">
         <button
@@ -48,7 +48,16 @@
         </div>
       </div>
 
-      <div *ngIf="i !== navigationData[role].length - 1" class="section-divider"></div>
+      <div *ngIf="!item.isToggleable">
+        <a
+          [class]="isAdmin ? 'admin-link' : 'utilisateur-link'"
+          (click)="handleChangeShow()"
+        >
+          {{ item.title }}
+        </a>
+      </div>
+
+      <div *ngIf="i !== getNavigationData().length - 1" class="section-divider"></div>
     </div>
   </nav>
 </div>
