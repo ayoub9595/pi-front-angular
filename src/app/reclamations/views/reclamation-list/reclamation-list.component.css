@@ -45,6 +45,22 @@
   transition: background-color 0.3s ease;
 }
 
+.add-button {
+  cursor: pointer;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  border: none;
+  background-color: #5dade2;
+  color: white;
+  font-size: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.add-button:hover {
+  background-color: #3498db;
+}
+
 .show-btn {
   background-color: lightgreen;
   color: white;

@@ -38,3 +38,13 @@ export const adminGuard = () => {
   }
   return router.parseUrl('/access-denied');
 }
+
+
+export const notAdminGuard = () => {
+  const router = inject(Router);
+  const authenticationService = inject(AuthenticationService);
+  if(!authenticationService.isAdmin()) {
+    return true;
+  }
+  return router.parseUrl('/access-denied');
+}

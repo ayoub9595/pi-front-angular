@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {ReclamationListComponent} from './views/reclamation-list/reclamation-list.component';
 import {AddReclamationComponent} from './views/add-reclamation/add-reclamation.component';
+import {notAdminGuard} from '../guards/auth.guard';
 
 const routes: Routes = [
   {  path: '', component: ReclamationListComponent },
-  {  path: 'add', component: AddReclamationComponent },
+  {  path: 'add', component: AddReclamationComponent, canActivate: [ notAdminGuard], },
 ];
 
 @NgModule({

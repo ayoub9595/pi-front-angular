@@ -1,6 +1,18 @@
-<div class="table-container">
-  <h2>Liste des Réclamations</h2>
+<div *ngIf="reclamations.length === 0" class="no-affectations-container">
+  <div class="header">
+    <h2>Liste des réclamations</h2>
+    <button *ngIf="!isAdmin" class="add-button" (click)="goToCreateReclamation()">➕</button>
+  </div>
+  <div class="no-affectations-message">
+    <p>Aucune réclamation disponible</p>
+  </div>
+</div>
 
+<div *ngIf="reclamations.length > 0" class="table-container">
+  <div class="header">
+    <h2>Liste des réclamations</h2>
+    <button *ngIf="!isAdmin" class="add-button" (click)="goToCreateReclamation()">➕</button>
+  </div>
   <table class="table">
     <thead>
     <tr>
