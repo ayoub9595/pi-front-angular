@@ -30,7 +30,7 @@
     </button>
   </div>
 
-  <div formArrayName="caracteristiques">
+  <div formArrayName="caracteristiques" class="caracteristiques">
     <div
       *ngFor="let carac of caracteristiques.controls; let i = index"
       [formGroupName]="i"
