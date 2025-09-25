@@ -1,4 +1,5 @@
 import {Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import { Router } from '@angular/router';
 import { navigationData } from '../../utils/NavigationData';
 import { AuthenticationService } from '../../services/authentication.service';
 
@@ -24,7 +25,10 @@ export class SidebarComponent implements OnInit,OnDestroy {
 
   navigationData = navigationData;
 
-  constructor(private authenticationService: AuthenticationService) {
+  constructor(
+    private authenticationService: AuthenticationService,
+    private router: Router
+  ) {
     this.role = this.authenticationService.getCurrentUserRole()!
     this.isLoggedIn = authenticationService.isLoggedIn();
     this.isAdmin = authenticationService.isAdmin();
@@ -55,6 +59,20 @@ export class SidebarComponent implements OnInit,OnDestroy {
     this.openSections[section] = !this.openSections[section];
   }
 
+  handleLogout(): void {
+    localStorage.clear();
+    this.router.navigate(['/'], { replaceUrl: true });
+  }
+
+  handleSubLinkClick(subLink: any, event: Event): void {
+    if (subLink.label === "Logout") {
+      event.preventDefault();
+      this.handleLogout();
+    } else {
+      this.handleChangeShow();
+    }
+  }
+
   getNavigationData() {
     const baseData = this.navigationData[this.role] || [];
 
@@ -64,9 +82,9 @@ export class SidebarComponent implements OnInit,OnDestroy {
         title: "Utilisateur",
         isToggleable: true,
         subLinks: [
-          { to: "/profile", label: "Profile" },
-          { to: "/change-password", label: "Changer mot de passe" },
-          { to: "/logout", label: "Logout" }
+          { to: "/home/profile", label: "Profile" },
+          { to: "/home/change-password", label: "Changer mot de passe" },
+          { to: "#", label: "Logout" } // The 'to' doesn't matter since we handle it with click event
         ]
       };
 
@@ -75,5 +93,4 @@ export class SidebarComponent implements OnInit,OnDestroy {
 
     return baseData;
   }
-
 }

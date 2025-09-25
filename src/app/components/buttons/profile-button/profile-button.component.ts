@@ -12,6 +12,10 @@ export class ProfileButtonComponent {
 
   }
 
+  goTo(path: string) {
+    this.router.navigate([path]);
+  }
+
   logout() {
     localStorage.clear();
     this.router.navigate(['/']);

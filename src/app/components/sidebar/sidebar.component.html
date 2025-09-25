@@ -41,7 +41,7 @@
             *ngFor="let subLink of item.subLinks"
             [routerLink]="subLink.to"
             class="admin-link sub-link"
-            (click)="handleChangeShow()"
+            (click)="handleSubLinkClick(subLink, $event)"
           >
             {{ subLink.label }}
           </a>

@@ -4,11 +4,11 @@
   </button>
 
   <div class="dropdown-menu">
-    <div class="dropdown-item">
+    <div class="dropdown-item" (click)="goTo('/home/profile')">
       <details-icon></details-icon>
       Profile
     </div>
-    <div class="dropdown-item">
+    <div class="dropdown-item" (click)="goTo('/home/change-password')">
       <change-icon></change-icon>
       Change Password
     </div>
