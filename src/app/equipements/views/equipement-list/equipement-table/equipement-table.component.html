@@ -1,0 +1,65 @@
+<div class="table-container">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Description</th>
+      <th>Numéro de Série</th>
+      <th class="hide-first">Date d'Acquisition</th>
+      <th class="hide-second">Maintenance Prévue</th>
+      <th>Actif</th>
+      <th class="hide-third">Caractéristiques</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let eq of equipments">
+      <td><strong>{{ eq.nom }}</strong></td>
+      <td>{{ eq.description || '-' }}</td>
+      <td>{{ eq.numero_serie || '-' }}</td>
+      <td class="hide-first">
+        {{ eq.date_acquisition ? (eq.date_acquisition | date:'yyyy-MM-dd') : '-' }}
+      </td>
+      <td class="hide-second">
+        {{ eq.maintenance_prevue ? (eq.maintenance_prevue | date:'yyyy-MM-dd') : '-' }}
+      </td>
+      <td>
+                    <span
+                      class="status-badge"
+                      [ngClass]="eq.est_actif ? 'active' : 'inactive'">
+                        {{ eq.est_actif ? 'Oui' : 'Non' }}
+                    </span>
+      </td>
+      <td class="hide-third">
+        <ul style="padding-left: 16px; margin: 0;">
+          <li *ngFor="let carac of eq.caracteristiques">
+            <strong>{{ carac.caracteristique }}</strong>: {{ carac.valeur }}
+          </li>
+        </ul>
+      </td>
+      <td>
+        <div class="action-buttons">
+          <button
+            class="action-button show-btn"
+            (click)="showEquipmentDetails(eq!)"
+            title="Voir les détails">
+            <show-icon [size]="26" ></show-icon>
+          </button>
+          <button
+            (click)="updateEquipment(eq.id!)"
+            class="action-button edit-btn"
+            title="Modifier">
+            <edit-icon></edit-icon>
+          </button>
+          <button
+            (click)="deleteEquipment(eq.id!)"
+            class="action-button delete-btn"
+            title="Supprimer">
+            <delete-icon></delete-icon>
+          </button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,32 @@
+<info-modal [title]="'Details de l\'équipement'" (close)="closeModal()">
+  <div class="equipment-infos">
+    <p class="p">
+      <strong>Nom:</strong> {{ equipment.nom }}
+    </p>
+    <p class="p">
+      <strong>Description:</strong> {{ equipment.description || '-' }}
+    </p>
+    <p class="p">
+      <strong>Numéro de Série:</strong> {{ equipment.numero_serie || '-' }}
+    </p>
+    <p class="p">
+      <strong>Date d'Acquisition:</strong>
+      {{ equipment.date_acquisition ? (equipment.date_acquisition | date:'yyyy-MM-dd') : '-' }}
+    </p>
+    <p class="p">
+      <strong>Maintenance Prévue:</strong>
+      {{ equipment.maintenance_prevue ? (equipment.maintenance_prevue | date:'yyyy-MM-dd') : '-' }}
+    </p>
+    <p class="p">
+      <strong>Statut:</strong> {{ equipment.est_actif ? '✅ Actif' : '❌ Inactif' }}
+    </p>
+  </div>
+  <ng-container *ngIf="equipment.caracteristiques && equipment.caracteristiques.length > 0">
+    <h3 class="heading">Caractéristiques</h3>
+    <div class="caracteristiques-list">
+      <div *ngFor="let carac of equipment.caracteristiques" class="caracteristique-item">
+        <strong>{{ carac.caracteristique }}:</strong> {{ carac.valeur }}
+      </div>
+    </div>
+  </ng-container>
+</info-modal>

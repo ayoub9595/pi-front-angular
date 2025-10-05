@@ -13,8 +13,11 @@ import {ToasterService} from '../../../services/toaster.service';
 export class EquipementListComponent implements OnInit {
 
   isLoading = true;
+  showInfoModal = false;
   showModal = false;
   equipementIdToDelete: number | null = null
+
+  equipementToShow: Equipement| null = null ;
 
   equipements: Equipement[] = [];
 
@@ -49,6 +52,15 @@ export class EquipementListComponent implements OnInit {
     this.equipementIdToDelete = id;
     this.showModal = true;
   }
+  displayModalInfo(equipement: Equipement) {
+    this.equipementToShow = equipement;
+    this.showInfoModal = true;
+
+  }
+  showModalDelete(id: number) {
+    this.equipementIdToDelete = id;
+    this.showModal = true;
+  }
   deleteEquipement() {
     this.equipementService.deleteEquipementById(this.equipementIdToDelete!).subscribe({
       next: ({message}) => {
@@ -69,8 +81,12 @@ export class EquipementListComponent implements OnInit {
     })
 
   }
+  closeInfoModal() {
+    this.showInfoModal = false;
+  }
   closeModal() {
     this.showModal = false;
   }
+
 
 }

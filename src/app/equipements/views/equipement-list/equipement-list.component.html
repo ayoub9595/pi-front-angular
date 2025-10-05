@@ -7,6 +7,12 @@
                (cancel)="closeModal()"
 ></confirm-modal>
 
+<equipement-details *ngIf="showInfoModal"
+                    [equipment]="equipementToShow!"
+                    (handleClose)="closeInfoModal()" >
+
+</equipement-details>
+
 <div *ngIf="equipements.length === 0 && !isLoading" class="no-equipment-container">
   <div class="header">
     <h2>Liste des Équipements</h2>
@@ -19,52 +25,27 @@
   </div>
 </div>
 
-<div *ngIf="equipements.length > 0 && !isLoading" class="table-container">
+<div *ngIf="equipements.length > 0 && !isLoading">
   <div class="header">
     <h2>Liste des Équipements</h2>
     <div>
       <button class="add-button" (click)="goToAddEquipement()">➕</button>
     </div>
   </div>
-  <table class="table">
-    <thead>
-    <tr>
-      <th>Nom</th>
-      <th>Description</th>
-      <th>Numéro de Série</th>
-      <th>Date d'Acquisition</th>
-      <th>Maintenance Prévue</th>
-      <th>Actif</th>
-      <th>Caractéristiques</th>
-      <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let eq of equipements">
-      <td>{{ eq.nom }}</td>
-      <td>{{ eq.description }}</td>
-      <td>{{ eq.numero_serie || "-" }}</td>
-      <td>{{ eq.date_acquisition || "-" }}</td>
-      <td>{{ eq.maintenance_prevue || "-" }}</td>
-      <td>{{ eq.est_actif ? "Oui" : "Non" }}</td>
-      <td>
-        <ul style="padding-left: 16px; margin: 0">
-          <li *ngFor="let carac of eq.caracteristiques">
-            <strong>{{ carac.caracteristique }}</strong>: {{ carac.valeur }}
-          </li>
-        </ul>
-      </td>
-      <td>
-        <div class="action-buttons">
-          <button class="action-button edit-btn" (click)="goToEditEquipement(eq.id!)">
-            <edit-icon></edit-icon>
-          </button>
-          <button class="action-button delete-btn" (click)="handleDelete(eq.id!)">
-            <delete-icon></delete-icon>
-          </button>
-        </div>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+
+  <equipement-table [equipments]="equipements"
+                    (onShowDetails)="displayModalInfo($event)"
+                    (onUpdate)="goToEditEquipement($event)"
+                    (onDelete)="showModalDelete($event)"
+  >
+
+  </equipement-table>
+
+  <equipement-card [equipments]="equipements"
+                    (onUpdate)="goToEditEquipement($event)"
+                    (onDelete)="showModalDelete($event)"
+  >
+
+  </equipement-card>
+
 </div>

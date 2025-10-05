@@ -1,0 +1,62 @@
+<div class="cards-container">
+  <div *ngFor="let eq of equipments" class="equipment-card">
+    <div class="equipment-card-header">
+      <span class="equipment-card-title">{{ eq.nom }}</span>
+      <span
+        class="status-badge"
+        [ngClass]="eq.est_actif ? 'active' : 'inactive'">
+                {{ eq.est_actif ? 'Actif' : 'Inactif' }}
+            </span>
+    </div>
+    <div class="equipment-card-body">
+      <div class="equipment-card-field">
+        <span class="equipment-card-label">Description</span>
+        <span class="equipment-card-value">
+                    {{ eq.description || '-' }}
+                </span>
+      </div>
+      <div class="equipment-card-field">
+        <span class="equipment-card-label">N° Série</span>
+        <span class="equipment-card-value">
+                    {{ eq.numero_serie || '-' }}
+                </span>
+      </div>
+      <div class="equipment-card-field">
+        <span class="equipment-card-label">Date acquisition</span>
+        <span class="equipment-card-value">
+                    {{ eq.date_acquisition ? (eq.date_acquisition | date:'yyyy-MM-dd') : '-' }}
+                </span>
+      </div>
+      <div class="equipment-card-field">
+        <span class="equipment-card-label">Maintenance</span>
+        <span class="equipment-card-value">
+                    {{ eq.maintenance_prevue ? (eq.maintenance_prevue | date:'yyyy-MM-dd') : '-' }}
+                </span>
+      </div>
+      <div *ngIf="eq.caracteristiques && eq.caracteristiques.length > 0" class="equipment-card-field">
+        <span class="equipment-card-label">Caractéristiques</span>
+        <div class="equipment-card-value">
+          <ul style="padding-left: 16px; margin: 0; text-align: left;">
+            <li *ngFor="let carac of eq.caracteristiques">
+              <strong>{{ carac.caracteristique }}</strong>: {{ carac.valeur }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="equipment-card-actions">
+      <button
+        (click)="updateEquipement(eq.id!)"
+        class="action-button edit-btn"
+        title="Modifier">
+        <edit-icon></edit-icon>
+      </button>
+      <button
+        (click)="removeEquipement(eq.id!)"
+        class="action-button delete-btn"
+        title="Supprimer">
+        <delete-icon></delete-icon>
+      </button>
+    </div>
+  </div>
+</div>

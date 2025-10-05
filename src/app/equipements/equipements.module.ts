@@ -10,6 +10,11 @@ import {EditIconComponent} from '../components/icons/edit-icon/edit-icon.compone
 import {LoaderComponent} from '../components/loader/loader.component';
 import { EditEquipementComponent } from './views/edit-equipement/edit-equipement.component';
 import {ConfirmModalComponent} from '../components/confirm-modal/confirm-modal.component';
+import { EquipementCardComponent } from './views/equipement-list/equipement-card/equipement-card.component';
+import { EquipementTableComponent } from './views/equipement-list/equipement-table/equipement-table.component';
+import {ShowIconComponent} from "../components/show-icon/show-icon.component";
+import { EquipementDetailsComponent } from './views/equipement-details/equipement-details.component';
+import {InfoModalComponent} from '../components/info-modal/info-modal.component';
 
 
 
@@ -17,7 +22,10 @@ import {ConfirmModalComponent} from '../components/confirm-modal/confirm-modal.c
   declarations: [
     AddEquipementComponent,
     EquipementListComponent,
-    EditEquipementComponent
+    EditEquipementComponent,
+    EquipementCardComponent,
+    EquipementTableComponent,
+    EquipementDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +34,9 @@ import {ConfirmModalComponent} from '../components/confirm-modal/confirm-modal.c
     DeleteIconComponent,
     EditIconComponent,
     LoaderComponent,
-    ConfirmModalComponent
+    ConfirmModalComponent,
+    ShowIconComponent,
+    InfoModalComponent
   ]
 })
 export class EquipementsModule { }
