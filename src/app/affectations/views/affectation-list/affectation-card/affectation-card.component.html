@@ -1,0 +1,62 @@
+<div class="cards-container">
+  <div
+    *ngFor="let affectation of affectations;"
+    class="card">
+
+    <div class="card-header">
+      <span class="status-badge active">
+        {{ affectation.determine ? "Determinée" : "Indeterminée" }}
+      </span>
+    </div>
+
+    <div class="card-body">
+      <div class="card-field">
+        <span class="card-label">Equipement</span>
+        <span class="card-value">
+          {{ affectation.equipement!.nom || "-" }}
+        </span>
+      </div>
+
+      <div class="card-field">
+        <span class="card-label">Utilisateur</span>
+        <span class="card-value">
+          {{ affectation.utilisateur!.nom || "-" }}
+        </span>
+      </div>
+
+      <div class="card-field">
+        <span class="card-label">Date début</span>
+        <span class="card-value">
+          {{ affectation.date_debut.split("T")[0] || "-" }}
+        </span>
+      </div>
+
+      <div *ngIf="affectation.determine" class="card-field">
+        <span class="card-label">Date fin</span>
+        <span class="card-value">
+          {{ affectation.date_fin!.split("T")[0] || "-" }}
+        </span>
+      </div>
+    </div>
+
+    <div class="card-actions">
+      <button
+        (click)="showAffectation(affectation.id!)"
+        class="action-button show-btn">
+        <show-icon [size]="26"></show-icon>
+      </button>
+      <button
+        *ngIf="isAdmin"
+        (click)="updateAffectation(affectation.id!)"
+        class="action-button edit-btn">
+        <edit-icon></edit-icon>
+      </button>
+      <button
+        *ngIf="isAdmin"
+        (click)="deleteAffectation(affectation.id!)"
+        class="action-button delete-btn">
+        <delete-icon></delete-icon>
+      </button>
+    </div>
+  </div>
+</div>

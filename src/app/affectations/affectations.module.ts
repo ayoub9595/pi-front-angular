@@ -14,6 +14,8 @@ import {InfoModalComponent} from '../components/info-modal/info-modal.component'
 import { AddAffectationComponent } from './views/add-affectation/add-affectation.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { EditAffectationComponent } from './views/edit-affectation/edit-affectation.component';
+import { AffectationTableComponent } from './views/affectation-list/affectation-table/affectation-table.component';
+import { AffectationCardComponent } from './views/affectation-list/affectation-card/affectation-card.component';
 
 
 
@@ -24,7 +26,9 @@ import { EditAffectationComponent } from './views/edit-affectation/edit-affectat
     EquipementCardInfoComponent,
     AffectationDetailsComponent,
     AddAffectationComponent,
-    EditAffectationComponent
+    EditAffectationComponent,
+    AffectationTableComponent,
+    AffectationCardComponent
   ],
     imports: [
         CommonModule,

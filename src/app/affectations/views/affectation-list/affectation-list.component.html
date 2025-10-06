@@ -22,41 +22,26 @@
 
 <affectation-details *ngIf="showInfoModal" [affectation]="selectedAffectation!" (close)="showInfoModal = false">
 </affectation-details>
-<div class="table-container" *ngIf="!isLoading && affectations.length > 0">
+<div *ngIf="!isLoading && affectations.length > 0">
   <div class="header">
     <h2>Liste des Affectations</h2>
 
     <button *ngIf="isAdmin" (click)="goToAdd()" class="add-button">➕</button>
   </div>
+  <affectation-table [affectations]="affectations"
+                     [isAdmin]="isAdmin"
+                     (handleShow)="handleShow($event)"
+                     (handleUpdate)="handleUpdate($event)"
+                     (handleDelete)="handleDelete($event)"
 
-  <table class="table">
-    <thead>
-    <tr>
-      <th>Équipement</th>
-      <th>Utilisateur</th>
-      <th>Date Début</th>
-      <th>Date Fin</th>
-      <th>Déterminé</th>
-      <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let a of affectations">
-      <td>{{a.equipement.nom || "-"}}</td>
-      <td>{{a.utilisateur.nom || "-"}}</td>
-      <td>{{a.date_debut.split("T")[0]  || "-"}}</td>
-      <td>{{a.date_fin ? a.date_fin!.split("T")[0]  : "-"}}</td>
-      <td>{{a.determine ? "Oui" : "Non"}}</td>
-      <td>
-        <div class="action-buttons">
-          <button (click)="handleShow(a.id!)" class="action-button show-btn">
-            <show-icon [size]="24"></show-icon>
-          </button>
-          <button *ngIf="isAdmin" (click)="handleUpdate(a.id!)" class="action-button edit-btn"><edit-icon></edit-icon></button>
-          <button *ngIf="isAdmin" (click)="handleDelete(a.id!)" class="action-button delete-btn"><delete-icon></delete-icon></button>
-        </div>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+  >
+  </affectation-table>
+  <affectation-card [affectations]="affectations"
+                     [isAdmin]="isAdmin"
+                     (handleShow)="handleShow($event)"
+                     (handleUpdate)="handleUpdate($event)"
+                     (handleDelete)="handleDelete($event)"
+
+  >
+  </affectation-card>
 </div>

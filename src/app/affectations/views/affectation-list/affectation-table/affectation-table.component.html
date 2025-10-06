@@ -1,0 +1,44 @@
+<div class="table-container">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Équipement</th>
+      <th>Utilisateur</th>
+      <th>Date Début</th>
+      <th>Date Fin</th>
+      <th>Déterminé</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let a of affectations;">
+      <td>{{ a.equipement!.nom || "-" }}</td>
+      <td>{{ a.utilisateur!.nom || "-" }}</td>
+      <td>{{ a.date_debut.split("T")[0] || "-" }}</td>
+      <td>{{ a.date_fin ? a.date_debut.split("T")[0] || "-" : "-" }}</td>
+      <td>{{ a.determine ? "Oui" : "Non" }}</td>
+      <td>
+        <div class="action-buttons">
+          <button
+            (click)="showAffectation(a.id!)"
+            class="action-button show-btn">
+            <show-icon [size]="24"></show-icon>
+          </button>
+          <button
+            *ngIf="isAdmin"
+            (click)="updateAffectation(a.id!)"
+            class="action-button edit-btn">
+            <edit-icon></edit-icon>
+          </button>
+          <button
+            *ngIf="isAdmin"
+            (click)="deleteAffectation(a.id!)"
+            class="action-button delete-btn">
+            <delete-icon></delete-icon>
+          </button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
