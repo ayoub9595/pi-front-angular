@@ -1,0 +1,44 @@
+<div class="cards-container">
+  <div *ngFor="let reclamation of reclamations" class="card">
+    <div class="card-header">
+      <span [class]="'status-badge ' + getStatusBadge(reclamation.etat_reclamation)">
+        {{ reclamation.etat_reclamation }}
+      </span>
+    </div>
+    <div class="card-body">
+      <div class="card-field">
+        <span class="card-label">Nom utilisateur</span>
+        <span class="card-value">
+          {{ reclamation.utilisateur!.nom}}
+        </span>
+      </div>
+      <div class="card-field">
+        <span class="card-label">Equipement</span>
+        <span class="card-value">
+          {{ reclamation.equipement!.nom}}
+        </span>
+      </div>
+      <div class="card-field">
+        <span class="card-label">Date Réclamation</span>
+        <span class="card-value">
+          {{ reclamation.date_reclamation ? (reclamation.date_reclamation | date: 'yyyy-MM-dd') : "—" }}
+        </span>
+      </div>
+      <div class="card-field">
+        <span class="card-label">Description</span>
+        <span class="card-value">
+          {{ reclamation!.description}}
+        </span>
+      </div>
+    </div>
+    <div class="card-actions">
+      <button
+        (click)="showReclamation(reclamation)"
+        class="action-button show-btn"
+        title="Modifier"
+      >
+        <show-icon [size]="26"></show-icon>
+      </button>
+    </div>
+  </div>
+</div>

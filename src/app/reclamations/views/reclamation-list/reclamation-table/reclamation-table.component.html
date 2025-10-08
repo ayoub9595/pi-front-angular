@@ -1,0 +1,29 @@
+<div *ngIf="reclamations.length > 0" class="table-container">
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Nom Utilisateur</th>
+      <th>Équipement</th>
+      <th>Date Réclamation</th>
+      <th class="hide-first">Description</th>
+      <th class="hide-second">Etat de la reclamation</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let rec of reclamations">
+      <td>{{ rec.utilisateur.nom  }}</td>
+      <td>{{ rec.equipement.nom  }}</td>
+      <td>{{ rec.date_reclamation.split('T')[0] }}</td>
+      <td class="hide-first">{{ rec.description }}</td>
+      <td class="hide-second">{{ rec.etat_reclamation }}</td>
+      <td>
+        <button (click)="showReclamation(rec)" class="action-button show-btn" >
+          <show-icon [size]="24"></show-icon>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

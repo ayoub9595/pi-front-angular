@@ -11,6 +11,8 @@ import {InfoModalComponent} from '../components/info-modal/info-modal.component'
 import { ProcessReclamationComponent } from './components/process-reclamation/process-reclamation.component';
 import {LoaderForButtonComponent} from "../components/loader-for-button/loader-for-button.component";
 import {LoaderComponent} from '../components/loader/loader.component';
+import { ReclamationTableComponent } from './views/reclamation-list/reclamation-table/reclamation-table.component';
+import { ReclamationCardComponent } from './views/reclamation-list/reclamation-card/reclamation-card.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import {LoaderComponent} from '../components/loader/loader.component';
     AddReclamationComponent,
     ReclamationListComponent,
     ReclamationDetailsComponent,
-    ProcessReclamationComponent
+    ProcessReclamationComponent,
+    ReclamationTableComponent,
+    ReclamationCardComponent
   ],
   imports: [
     CommonModule,
