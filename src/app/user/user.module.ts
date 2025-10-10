@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { UserRoutingModule } from './user-routing.module';
 import { ProfileComponent } from './views/profile/profile.component';
 import { ChangePasswordComponent } from './views/change-password/change-password.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {ShowIconComponent} from "../components/show-icon/show-icon.component";
 
 
 @NgModule({
@@ -11,9 +13,11 @@ import { ChangePasswordComponent } from './views/change-password/change-password
     ProfileComponent,
     ChangePasswordComponent
   ],
-  imports: [
-    CommonModule,
-    UserRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        UserRoutingModule,
+        ReactiveFormsModule,
+        ShowIconComponent
+    ]
 })
 export class UserModule { }

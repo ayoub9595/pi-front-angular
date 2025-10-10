@@ -8,10 +8,10 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 })
 export class ShowIconComponent {
   @Input() size!: number;
-  @Output() click = new EventEmitter();
+  @Output() iconClick = new EventEmitter();
 
   handleClick() {
-    this.click.emit();
+    this.iconClick.emit();
   }
 
 }

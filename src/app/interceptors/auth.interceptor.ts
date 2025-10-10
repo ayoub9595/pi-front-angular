@@ -7,7 +7,7 @@ import {AuthenticationService} from '../services/authentication.service';
 export const AuthInterceptor: HttpInterceptorFn = (req, next) => {
   const token = localStorage.getItem('access_token');
 
-  const isAuthRequest = req.url.includes('/auth/');
+  const isAuthRequest = req.url.includes('/auth/') && !req.url.includes('/auth/change-password');
 
   if (token && !isAuthRequest) {
     const authReq = req.clone({

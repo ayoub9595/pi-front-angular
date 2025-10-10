@@ -11,6 +11,11 @@ interface JwtPayload {
   email?: string;
 }
 
+interface PasswordPayload {
+  ancien_mot_de_passe: string;
+  nouveau_mot_de_passe: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -68,5 +73,11 @@ export class AuthenticationService {
         }
       }
     );
+  }
+
+  changePassword(passwordPayload: PasswordPayload ) {
+    return this.http.put<PasswordPayload>(
+      `${this.apiUrl}/change-password`,passwordPayload
+    )
   }
 }
