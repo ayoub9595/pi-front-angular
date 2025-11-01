@@ -9,6 +9,7 @@ interface JwtPayload {
   exp: number;
   role?: string;
   email?: string;
+  nom?: string;
 }
 
 interface PasswordPayload {
@@ -51,6 +52,15 @@ export class AuthenticationService {
     }
     return null;
 
+  }
+
+  getCurrentUserName() {
+    const token = localStorage.getItem('access_token');
+    if (token) {
+      const {nom} = jwtDecode<JwtPayload>(token);
+      return nom || 'Utilisateur';
+    }
+    return 'Utilisateur';
   }
 
   isLoggedIn(): boolean {
