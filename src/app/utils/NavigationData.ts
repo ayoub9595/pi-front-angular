@@ -5,8 +5,8 @@ export const navigationData = {
       title: "Équipement",
       isToggleable: true,
       subLinks: [
-        { to: "/home/equipements/add", label: "Ajouter équipement" },
-        { to: "/home/equipements/", label: "Liste des équipements" }
+        { to: "/home/equipements/add", label: "Ajouter équipement",showRoleBadge: false },
+        { to: "/home/equipements/", label: "Liste des équipements",showRoleBadge: false }
       ]
     },
     {
@@ -14,8 +14,8 @@ export const navigationData = {
       title: "Affectation",
       isToggleable: true,
       subLinks: [
-        { to: "/home/affectations", label: "Liste des affectations" },
-        { to: "/home/affectations/add", label: "Créer une affectation" }
+        { to: "/home/affectations", label: "Liste des affectations",showRoleBadge: false },
+        { to: "/home/affectations/add", label: "Créer une affectation",showRoleBadge: false }
       ]
     },
     {
@@ -23,7 +23,7 @@ export const navigationData = {
       title: "Réclamation",
       isToggleable: true,
       subLinks: [
-        { to: "/home/reclamations", label: "Liste des réclamations" }
+        { to: "/home/reclamations", label: "Liste des réclamations",showRoleBadge: false }
       ]
     }
   ],
@@ -34,7 +34,7 @@ export const navigationData = {
       title: "Affectation",
       isToggleable: true,
       subLinks: [
-        { to: "/home/affectations", label: "Mes affectations" }
+        { to: "/home/affectations", label: "Mes affectations",showRoleBadge: false }
       ]
     },
     {
@@ -42,8 +42,8 @@ export const navigationData = {
       title: "Réclamation",
       isToggleable: true,
       subLinks: [
-        { to: "/home/reclamations/add", label: "Faire une réclamation" },
-        { to: "/home/reclamations", label: "Mes réclamations" }
+        { to: "/home/reclamations/add", label: "Faire une réclamation" ,showRoleBadge: false},
+        { to: "/home/reclamations", label: "Mes réclamations",showRoleBadge: false }
       ]
     }
   ]

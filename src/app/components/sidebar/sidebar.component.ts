@@ -16,6 +16,7 @@ export class SidebarComponent implements OnInit,OnDestroy {
   isLoggedIn: boolean;
   isAdmin: boolean;
   role: 'ADMIN' | 'UTILISATEUR' = 'UTILISATEUR';
+  nom: string = 'Utilisateur';
   isMobile: boolean = false;
 
   openSections: { [key: string]: boolean } = {
@@ -30,6 +31,7 @@ export class SidebarComponent implements OnInit,OnDestroy {
     private router: Router
   ) {
     this.role = this.authenticationService.getCurrentUserRole()!
+    this.nom = this.authenticationService.getCurrentUserName();
     this.isLoggedIn = authenticationService.isLoggedIn();
     this.isAdmin = authenticationService.isAdmin();
   }
@@ -82,9 +84,9 @@ export class SidebarComponent implements OnInit,OnDestroy {
         title: "Utilisateur",
         isToggleable: true,
         subLinks: [
-          { to: "/home/profile", label: "Profile" },
+          { to: "/home/profile", label: this.nom,showRoleBadge: true },
           { to: "/home/change-password", label: "Changer mot de passe" },
-          { to: "#", label: "Logout" } // The 'to' doesn't matter since we handle it with click event
+          { to: "#", label: "Logout" }
         ]
       };
 
