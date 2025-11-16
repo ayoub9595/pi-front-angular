@@ -1,1 +1,56 @@
-<p>profile works!</p>
+<h2>Information de l'utilisateur</h2>
+<div class="container">
+  <div class="user-infos">
+    <div class="user-labels">
+      <span>Nom:</span>
+      <span>Cin:</span>
+      <span>Email:</span>
+      <span>Telephone:</span>
+      <span>Role:</span>
+    </div>
+    <div class="user-data">
+      <span>{{ user ? user.nom : '-' }}</span>
+      <span>{{ user ? user.cin : '-' }}</span>
+      <span>{{ user ? user.email : '-' }}</span>
+      <span>{{ user ? user.telephone : '-' }}</span>
+      <span>{{ user ? user.role.toUpperCase() : '-' }}</span>
+    </div>
+  </div>
+  <button class="button" (click)="showModify = true">Modifier</button>
+</div>
+
+<div class="modification-section" *ngIf="showModify">
+  <h2>Modifier utilisateur</h2>
+  <form class="container" [formGroup]="userForm" (ngSubmit)="handleSubmit()">
+    <label>Nom:</label>
+    <input
+      class="input"
+      formControlName="nom"
+      required
+    />
+
+    <label>Cin:</label>
+    <input
+      class="input"
+      formControlName="cin"
+      required
+    />
+
+    <label>Email:</label>
+    <input
+      class="input"
+      type="email"
+      formControlName="email"
+      required
+    />
+
+    <label>Telephone:</label>
+    <input
+      class="input"
+      formControlName="telephone"
+      required
+    />
+
+    <button class="button" type="submit" [disabled]="userForm.invalid">Sauvegarder</button>
+  </form>
+</div>
