@@ -15,6 +15,7 @@ export class ProfileComponent {
   userForm: FormGroup;
   user: Utilsateur| null = null;
   showModify: boolean = false;
+  loading = false;
 
   constructor(
               private fb: FormBuilder,
@@ -58,15 +59,18 @@ export class ProfileComponent {
   handleSubmit(): void {
     if (this.userForm.valid) {
       const updatedUser = {id:this.authenticationService.getCurrentUserId(),...this.userForm.value};
+      this.loading = true;
       this.userService.updateUser(updatedUser).subscribe({
         next: user => {
           this.user = user;
           this.toast.showToast('Vos données ont été modifié avec succès','success');
           this.showModify = false;
+          this.loading = false;
         },
         error: error => {
           const errorMessage = error.error.message || error.error.msg || 'Une erreur est survenue';
           this.toast.showToast(errorMessage,'error')
+          this.loading = false;
         }
       })
     }

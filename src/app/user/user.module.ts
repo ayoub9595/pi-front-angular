@@ -6,6 +6,7 @@ import { ProfileComponent } from './views/profile/profile.component';
 import { ChangePasswordComponent } from './views/change-password/change-password.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {ShowIconComponent} from "../components/show-icon/show-icon.component";
+import {LoaderForButtonComponent} from "../components/loader-for-button/loader-for-button.component";
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {ShowIconComponent} from "../components/show-icon/show-icon.component";
         CommonModule,
         UserRoutingModule,
         ReactiveFormsModule,
-        ShowIconComponent
+        ShowIconComponent,
+        LoaderForButtonComponent
     ]
 })
 export class UserModule { }
