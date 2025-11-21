@@ -1,0 +1,10 @@
+services:
+  angular-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: angular-app
+    platform: linux/arm64/v8
+    ports:
+      - "4200:80"
+    restart: unless-stopped
