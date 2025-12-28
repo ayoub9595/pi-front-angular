@@ -1,11 +1,7 @@
 <div class="container">
   <div class="subcontainer">
     <div class="logo">
-      <img
-        class="logo-image"
-        src="https://avatars.githubusercontent.com/u/2487851?s=280&v=4"
-        alt="Logo"
-      />
+      <img class="logo-image" src="https://avatars.githubusercontent.com/u/2487851?s=280&v=4" alt="Logo" />
       <div class="titles">
         <h1 class="h1">Bienvenue sur</h1>
         <h1 class="h1">Norsys</h1>
@@ -16,55 +12,20 @@
       <h1>Inscription:</h1>
 
       <label>Nom:</label>
-      <input
-        class="input"
-        type="text"
-        required
-        formControlName="nom"
-      />
+      <input class="input" type="text" required formControlName="nom" />
 
       <label>Email:</label>
-      <input
-        class="input"
-        type="email"
-        required
-        formControlName="email"
-      />
+      <input class="input" type="email" required formControlName="email" />
 
       <label>CIN:</label>
-      <input
-        class="input"
-        type="text"
-        required
-        formControlName="cin"
-      />
+      <input class="input" type="text" required formControlName="cin" />
 
       <label>Numéro de téléphone:</label>
-      <input
-        class="input"
-        type="text"
-        required
-        formControlName="telephone"
-      />
+      <input class="input" type="text" required formControlName="telephone" />
 
-      <label>Mot de passe:</label>
-      <input
-        class="input"
-        type="password"
-        required
-        formControlName="mot_de_passe"
-      />
-
-      <label>Confirmation du mot de passe:</label>
-      <input
-        class="input"
-        type="password"
-        required
-        formControlName="confirm_mot_de_passe"
-      />
-
-      <button class="button" [disabled]="signupForm.invalid">
-        S'inscrire
+      <button class="button" [disabled]="signupForm.invalid || isLoading">
+        <span *ngIf="!isLoading">S'inscrire</span>
+        <loader-for-button *ngIf="isLoading"></loader-for-button>
       </button>
       <span>Tu as déjà un compte ? Connecte-toi <a routerLink="/">ici</a></span>
     </form>

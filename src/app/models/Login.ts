@@ -8,3 +8,8 @@ export interface LoginResponse {
   refresh_token: string;
   msg?: string;
 }
+
+export interface SignupResponse {
+  msg?: string;
+  request_id: number;
+}

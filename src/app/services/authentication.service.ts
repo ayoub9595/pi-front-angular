@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Login, LoginResponse } from '../models/Login';
+import { Login, LoginResponse, SignupResponse } from '../models/Login';
 import { Signup } from '../models/Signup';
 import { jwtDecode } from 'jwt-decode';
 
@@ -30,7 +30,7 @@ export class AuthenticationService {
   }
 
   signup(credentials: Signup) {
-    return this.http.post<LoginResponse>(`${this.apiUrl}/signup`, credentials);
+    return this.http.post<SignupResponse>(`${this.apiUrl}/signup`, credentials);
   }
 
   getCurrentUserRole() {

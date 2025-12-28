@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './views/login/login.component';
 import { SignupComponent } from './views/signup/signup.component';
-import {NgOptimizedImage} from '@angular/common';
+import { NgOptimizedImage } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HomeComponent } from './layout/home/home.component';
@@ -18,12 +18,13 @@ import { DetailsIconComponent } from './components/icons/details-icon/details-ic
 import { ChangeIconComponent } from './components/icons/change-icon/change-icon.component';
 import { LogoutIconComponent } from './components/icons/logout-icon/logout-icon.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
-import {ReactiveFormsModule} from '@angular/forms';
-import {provideHttpClient, withInterceptors} from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { ToasterComponent } from './components/toaster/toaster.component';
-import {AuthInterceptor, ErrorHandlerInterceptor} from './interceptors/auth.interceptor';
+import { AuthInterceptor, ErrorHandlerInterceptor } from './interceptors/auth.interceptor';
 import { NotFoundComponent } from './views/not-found/not-found.component';
 import { AccessDeniedComponent } from './views/access-denied/access-denied.component';
+import { LoaderForButtonComponent } from './components/loader-for-button/loader-for-button.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { AccessDeniedComponent } from './views/access-denied/access-denied.compo
     ToasterComponent,
     DashboardComponent,
     NotFoundComponent,
+    NotFoundComponent,
     AccessDeniedComponent
   ],
   imports: [
@@ -52,10 +54,11 @@ import { AccessDeniedComponent } from './views/access-denied/access-denied.compo
     AppRoutingModule,
     NgOptimizedImage,
     ReactiveFormsModule,
+    LoaderForButtonComponent
   ],
   providers: [
     provideHttpClient(
-      withInterceptors([AuthInterceptor,ErrorHandlerInterceptor])
+      withInterceptors([AuthInterceptor, ErrorHandlerInterceptor])
     )
   ],
   bootstrap: [AppComponent]

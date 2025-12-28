@@ -3,5 +3,4 @@ export interface Signup {
   email: string;
   cin: string;
   telephone: string;
-  mot_de_passe: string;
 }
